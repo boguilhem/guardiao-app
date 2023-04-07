@@ -1,77 +1,55 @@
 import { StyleSheet } from 'react-native';
 
-import { COLORS, FONT, SIZES } from '../../../constants';
+import { COLORS, FONT, SIZES } from '../constants';
 
 const styles = StyleSheet.create({
   container: {
     width: '100%',
     paddingHorizontal: SIZES.xxLarge,
+    marginBottom: SIZES.xxLarge,
   },
-  userName: {
-    fontFamily: FONT.regular,
+
+  title: {
+    fontFamily: FONT.medium,
     fontSize: SIZES.large,
+    marginLeft: SIZES.medium,
   },
-  welcomeMessage: {
+
+  subtitle: {
     fontFamily: FONT.bold,
     fontSize: SIZES.large,
     marginTop: 2,
     textAlign: 'center',
   },
-  welcomeContainer: {
+
+  headerContainer: {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  searchContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: SIZES.xLarge,
     flexDirection: 'row',
-    marginTop: SIZES.large,
-    height: 50,
   },
-  searchWrapper: {
-    flex: 1,
-    backgroundColor: COLORS.white,
-    marginRight: SIZES.small,
+
+  messageContainer: {
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: SIZES.medium,
-    height: '100%',
+    marginTop: SIZES.xLarge,
   },
-  searchInput: {
+
+  contentContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: SIZES.xLarge,
+  },
+
+  content: {
     fontFamily: FONT.regular,
-    width: '100%',
-    height: '100%',
-    paddingHorizontal: SIZES.medium,
+    fontSize: SIZES.medium,
+    marginTop: 2,
+    textAlign: 'justify',
   },
-  searchBtn: {
-    width: 50,
-    height: '100%',
-    backgroundColor: COLORS.tertiary,
-    borderRadius: SIZES.medium,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  searchBtnImage: {
-    width: '50%',
-    height: '50%',
-    tintColor: COLORS.white,
-  },
-  tabsContainer: {
-    width: '100%',
-    marginTop: SIZES.medium,
-  },
-  tab: (activeJobType, item) => ({
-    paddingVertical: SIZES.small / 2,
-    paddingHorizontal: SIZES.small,
-    borderRadius: SIZES.medium,
-    borderWidth: 1,
-    borderColor: activeJobType === item ? COLORS.secondary : COLORS.gray2,
-  }),
-  tabText: (activeJobType, item) => ({
-    fontFamily: FONT.medium,
-    color: activeJobType === item ? COLORS.secondary : COLORS.gray2,
-  }),
 
   cardsContainer: {
     width: '100%',
@@ -79,7 +57,6 @@ const styles = StyleSheet.create({
   },
 
   cardBtn: {
-    // width: '100%',
     marginTop: SIZES.medium,
     paddingVertical: SIZES.medium,
     paddingHorizontal: SIZES.xxLarge,
@@ -93,7 +70,6 @@ const styles = StyleSheet.create({
     fontFamily: FONT.regular,
     fontSize: SIZES.medium,
     textAlign: 'center',
-    // marginLeft: SIZES.xxxLarge,
     width: '80%',
   },
 

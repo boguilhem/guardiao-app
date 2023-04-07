@@ -15,6 +15,13 @@ import relatorio from '../assets/icons/relatorio.png';
 import lembretes from '../assets/icons/lembretes.png';
 import carboidratos from '../assets/icons/carboidratos.png';
 import conteudos from '../assets/icons/conteudos.png';
+import alimentacao from '../assets/icons/alimentacao.png';
+import introducao from '../assets/icons/introducao.png';
+import medicamentos from '../assets/icons/medicamentos.png';
+import estiloDeVida from '../assets/icons/estiloDeVida.png';
+import emergencia from '../assets/icons/emergencia.png';
+import complicacoes from '../assets/icons/complicacoes.png';
+import nivelGlicose from '../assets/icons/nivelGlicose.png';
 
 export default {
   heart,
@@ -34,4 +41,11 @@ export default {
   lembretes,
   carboidratos,
   conteudos,
+  alimentacao,
+  introducao,
+  medicamentos,
+  estiloDeVida,
+  emergencia,
+  complicacoes,
+  nivelGlicose,
 };
