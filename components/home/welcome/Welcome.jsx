@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 
 import styles from './welcome.style';
-import { icons, SIZES } from '../../../constants';
+import { icons } from '../../../constants';
 
 const Welcome = () => {
   const router = useRouter();
@@ -100,7 +99,7 @@ const Welcome = () => {
           <TouchableOpacity
             style={styles.cardBtn}
             onPress={() => {
-              router.push(`/pages/conteudos`);
+              router.push(`/pages/conteudo`);
             }}
           >
             <Image
