@@ -31,6 +31,8 @@ const Relatorio = () => {
   const router = useRouter();
   const [inputValue, setInputValue] = useState('');
   const [inputArray, SetInputArray] = useState([0]);
+  const [historyArray, SetHistoryArray] = useState([0]);
+  const [globalArray, SetGlobalArray] = useState([['']['']]);
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
@@ -47,11 +49,10 @@ const Relatorio = () => {
   const readData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
-      console.log('jasonValue1', jsonValue);
-
       if (jsonValue !== null) {
-        console.log('jasonValue2', jsonValue);
-        SetInputArray(JSON.parse(jsonValue));
+        await SetGlobalArray(JSON.parse(jsonValue));
+        await SetInputArray(JSON.parse(jsonValue)[0]);
+        await SetHistoryArray(JSON.parse(jsonValue)[1]);
       }
     } catch (e) {
       alert('Failed to fetch the input from storage');
@@ -75,8 +76,6 @@ const Relatorio = () => {
     let min = new Date().getMinutes();
 
     let finalObject = hours + ':' + min;
-
-    console.log(finalObject);
     return finalObject;
   };
 
@@ -88,9 +87,30 @@ const Relatorio = () => {
 
   const onSubmitEditing = () => {
     if (inputValue) {
-      data.datasets[0].data.push(parseInt(inputValue));
-      saveData(data.datasets[0].data);
+      if (inputArray[0] === 0) {
+        SetInputArray([parseInt(inputValue)]);
+        SetHistoryArray([[inputValue, showDate()]]);
+      } else {
+        data.datasets[0].data.push(parseInt(inputValue));
+        tuplesGraph.push([inputValue, showDate()]);
+      }
+      SetGlobalArray([inputArray, historyArray]);
+
+      saveData([inputArray, historyArray]);
     }
+  };
+
+  const onRemoveData = (item) => {
+    const indexTuples = tuplesGraph.indexOf(item);
+    const xT = tuplesGraph.splice(indexTuples, 1);
+
+    const indexInputArr = data.datasets[0].data.indexOf(parseInt(item[0]));
+    const x = data.datasets[0].data.splice(indexInputArr, 1);
+    if (inputArray[0] === undefined) {
+      data.datasets[0].data.push(0);
+    }
+    SetGlobalArray([inputArray, historyArray]);
+    saveData([inputArray, historyArray]);
   };
 
   let data = {
@@ -110,11 +130,19 @@ const Relatorio = () => {
       '24h',
     ],
     datasets: [
+      { data: inputArray, withDots: inputArray[0] === 0 ? false : true },
       {
-        data: inputArray,
+        data: [50], // minimum
+        withDots: false,
+      },
+      {
+        data: [300], // maximum
+        withDots: false,
       },
     ],
   };
+  let globalData = globalArray;
+  let tuplesGraph = historyArray;
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -188,7 +216,21 @@ const Relatorio = () => {
             style={styles.btnInput}
             onPress={() => {
               onSubmitEditing();
+              setInputValue('');
               forceUpdate();
+            }}
+          >
+            <Image
+              source={icons.circleButton}
+              resizeMode="contain"
+              style={styles.btnImg(40)}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.btnInput}
+            onPress={() => {
+              forceUpdate();
+              // clearStorage();
             }}
           >
             <Image
@@ -204,15 +246,20 @@ const Relatorio = () => {
         </View>
 
         <FlatList
-          data={data.datasets[0].data}
-          renderItem={({ item }) => (
-            <GlicemicData
-              iconUrl={icons.clearIcon}
-              dimension={20}
-              medicao={item}
-              horario={showDate()}
-            />
-          )}
+          data={tuplesGraph}
+          renderItem={({ item }) =>
+            historyArray[0] === 0 ? (
+              <></>
+            ) : (
+              <GlicemicData
+                iconUrl={icons.clearIcon}
+                dimension={20}
+                handlePress={() => onRemoveData(item)}
+                medicao={item[0]}
+                horario={item[1]}
+              />
+            )
+          }
         />
       </View>
     </SafeAreaView>
