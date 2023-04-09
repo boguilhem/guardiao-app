@@ -32,82 +32,42 @@ const Introducao = () => {
         <View style={styles.container}>
           <View style={styles.headerContainer}>
             <Image
-              source={icons.alimentacao}
+              source={icons.introducao}
               resizeMode="contain"
               style={styles.btnImg(30)}
             />
-            <Text style={styles.title}>Alimentação</Text>
+            <Text style={styles.title}>Introdução</Text>
           </View>
           <View style={styles.messageContainer}>
-            <Text style={styles.subtitle}>Descobri que tenho diabetes...</Text>
-            <Text style={styles.subtitle}>Como deverá ficar minha alimentação?</Text>
+            <Text style={styles.subtitle}>O que é a diabetes?</Text>
           </View>
           <View style={styles.contentContainer}>
             <Text style={styles.content}>
               {
-                'Os comitês de estudos sobre o diabetes têm orientado que as pessoas com diabetes sigam a mesma alimentação saudável recomendada à população em geral. Muitas vezes pensamos que teremos de fazer uma dieta rigorosa, mas na verdade o que se espera é um planejamento e organização dos hábitos alimentares. Isto quer dizer que teremos que ter uma maior atenção quanto às escolhas dos alimentos e a quantidade consumida.'
+                'É uma doença crônica na qual o corpo não produz insulina ou não consegue empregar adequadamente a insulina que produz.'
               }
               {'\n'}
-              {'Tentamos resumir os primeiros passos quando nos deparamos com essa nova'}
+              {'Existem alguns tipos de diabetes são eles:'}
               {'\n'}
               {'\n'}
               {
-                '1 – Distribua os alimentos em 5 a 6 refeições ao dia. Não deixe de fazer o café da manhã! Se não puder fazê-lo em casa, leve um lanche reforçado para a escola ou trabalho.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '2 – Nos lanches, comece sempre pelas frutas (evite sucos), mas não exagere na quantidade. Nenhum tipo de fruta é proibido! '
-              }
-              {'\n'}
-              {'\n'}
-              {'3 – No almoço e jantar, continue a comer o tradicional arroz com feijão.'}
-              {'\n'}
-              {'\n'}
-              {
-                '4 - A metade do prato deve ser de vegetais coloridos, principalmente os verde-escuros e amarelos. Pode ser na forma de salada crua e/ou vegetais cozidos. Evite molhos gordurosos.'
+                'Tipo 1 – Em algumas pessoas, o sistema imunológico ataca equivocadamente as células beta. Logo, pouca ou nenhuma insulina é liberada para o corpo. Como resultado, a glicose fica no sangue, em vez de ser usada como energia. Esse é o processo que caracteriza o Tipo 1 de diabetes, que concentra entre 5 e 10% do total de pessoas com a doença.O Tipo 1 aparece geralmente na infância ou adolescência, mas pode ser diagnosticado em adultos também. Essa variedade é sempre tratada com insulina, medicamentos, planejamento alimentar e atividades físicas, para ajudar a controlar o nível de glicose no sangue.'
               }
               {'\n'}
               {'\n'}
               {
-                '5 – Escolha pequenas porções de carnes magras e faça rodízio entre as brancas, vermelhas ou ovo. Experimente também pratos vegetarianos.'
+                'Tipo 2 – O Tipo 2 aparece quando o organismo não consegue usar adequadamente a insulina que produz; ou não produz insulina suficiente para controla a taxa de glicemia.Cerca de 90% das pessoas com diabetes têm o Tipo 2. Ele se manifesta mais frequentemente em adultos, mas crianças também podem apresentar. Dependendo da gravidade, ele pode ser controlado com atividade física e planejamento alimentar. Em outros casos, exige o uso de insulina e/ou outros medicamentos para controlar a glicose.'
               }
+              {'\n'}
+              {'\n'}
+              {'Gestacional – Durante a gravidez, para permitir o desenvolvimento do bebê, a mulher passa por mudan-ças em seu equilíbrio hormonal. A placenta, por exemplo, é uma fonte importante de hor-mônios que reduzem a ação da insulina, responsável pela captação e utilização da glico-se pelo corpo. O pâncreas, consequentemente, aumenta a produção de insulina para compensar este quadro.Em algumas mulheres, entretanto, este processo não ocorre e elas desenvolvem um quadro de diabetes gestacional, caracterizado pelo aumento do nível de glicose no sangue. Quando o bebê é exposto a grandes quantidades de glicose ainda no ambiente intrauterino, há maior risco de crescimento excessivo (macrossomia fetal) e, consequentemente, partos traumáticos, hipoglicemia neonatal e até de obesidade e diabetes na vida adulta.'}
               {'\n'}
               {'\n'}
               {
-                '6 – Evite os açúcares e alimentos açucarados. Se precisar utilize adoçante em pequena quantidade. Evite os adoçantes a base de frutose.'
+                'Pré-Diabetes - Já imaginou se o corpo humano contasse com um sistema de alarme que dispara quando o risco de desenvolver uma doença aumenta? Não seria uma chance de mudar seu futuro?A maioria das pessoas não sabe o que é pré-diabetes. Uma pesquisa feita pela SBD em parceria com o laboratório farmacêutico Abbott apontou que apenas 30% dos pacientes tinham informações sobre essa condição.O termo pré-diabetes é usado quando os níveis de glicose no sangue estão mais altos do que o normal, mas não o suficiente para um diagnóstico de Diabetes Tipo 2. Obesos, hipertensos e pessoas com alterações nos lipídios estão no grupo de alto risco.É importante destacar que 50% dos pacientes nesse estágio ‘pré’ vão desenvolver a doença. O pré-diabetes é especialmente importante por ser a única etapa que ainda pode ser revertida ou mesmo que permite retardar a evolução para o diabetes e suas complicações.'
               }
-              {'\n'}
-              {'\n'}
-              {
-                '7 - Só opte por produtos dietéticos se tiver certeza de que o mesmo atende as suas necessidades.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '8 – Evite frituras e diminua o consumo de gorduras animais: carnes gordas, queijos (exceto os mais magros como, por exemplo, ricota, minas frescal, cottage), embutidos, manteiga, margarina, requeijão, creme de leite.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '9 – Diminua o sal. Grande parte das pessoas com diabetes também apresentam pressão arterial elevada.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '10 – Procure usar alimentos menos processados: pães integrais, aveia, arroz integral, macarrão integral, etc.'
-              }
-              {'\n'}
-              {'\n'}
-              {'11 – Evite bebida alcoólica.'}
-              {'\n'}
-              {'\n'}
-              {'12 – Tome água várias vezes ao longo do dia.'}
-              {'\n'}
-              {'\n'}
-              {
-                '13 – Inclua como meta no seu plano de cuidado com diabetes, a consulta com um nutricionista especialista para orientação da sua alimentação ao longo da vida.'
-              }
+            
+              
             </Text>
           </View>
         </View>

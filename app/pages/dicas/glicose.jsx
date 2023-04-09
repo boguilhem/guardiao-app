@@ -32,83 +32,31 @@ const Glicose = () => {
         <View style={styles.container}>
           <View style={styles.headerContainer}>
             <Image
-              source={icons.alimentacao}
+              source={icons.nivelGlicose}
               resizeMode="contain"
               style={styles.btnImg(30)}
             />
-            <Text style={styles.title}>Alimentação</Text>
+            <Text style={styles.title}>Nível de Glicose</Text>
           </View>
           <View style={styles.messageContainer}>
             <Text style={styles.subtitle}>Descobri que tenho diabetes...</Text>
-            <Text style={styles.subtitle}>Como deverá ficar minha alimentação?</Text>
           </View>
           <View style={styles.contentContainer}>
+          <Text style={styles.subtitle}>O que é a glicose?</Text>
             <Text style={styles.content}>
-              {
-                'Os comitês de estudos sobre o diabetes têm orientado que as pessoas com diabetes sigam a mesma alimentação saudável recomendada à população em geral. Muitas vezes pensamos que teremos de fazer uma dieta rigorosa, mas na verdade o que se espera é um planejamento e organização dos hábitos alimentares. Isto quer dizer que teremos que ter uma maior atenção quanto às escolhas dos alimentos e a quantidade consumida.'
-              }
-              {'\n'}
-              {'Tentamos resumir os primeiros passos quando nos deparamos com essa nova'}
-              {'\n'}
-              {'\n'}
-              {
-                '1 – Distribua os alimentos em 5 a 6 refeições ao dia. Não deixe de fazer o café da manhã! Se não puder fazê-lo em casa, leve um lanche reforçado para a escola ou trabalho.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '2 – Nos lanches, comece sempre pelas frutas (evite sucos), mas não exagere na quantidade. Nenhum tipo de fruta é proibido! '
-              }
-              {'\n'}
-              {'\n'}
-              {'3 – No almoço e jantar, continue a comer o tradicional arroz com feijão.'}
-              {'\n'}
-              {'\n'}
-              {
-                '4 - A metade do prato deve ser de vegetais coloridos, principalmente os verde-escuros e amarelos. Pode ser na forma de salada crua e/ou vegetais cozidos. Evite molhos gordurosos.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '5 – Escolha pequenas porções de carnes magras e faça rodízio entre as brancas, vermelhas ou ovo. Experimente também pratos vegetarianos.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '6 – Evite os açúcares e alimentos açucarados. Se precisar utilize adoçante em pequena quantidade. Evite os adoçantes a base de frutose.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '7 - Só opte por produtos dietéticos se tiver certeza de que o mesmo atende as suas necessidades.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '8 – Evite frituras e diminua o consumo de gorduras animais: carnes gordas, queijos (exceto os mais magros como, por exemplo, ricota, minas frescal, cottage), embutidos, manteiga, margarina, requeijão, creme de leite.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '9 – Diminua o sal. Grande parte das pessoas com diabetes também apresentam pressão arterial elevada.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '10 – Procure usar alimentos menos processados: pães integrais, aveia, arroz integral, macarrão integral, etc.'
-              }
-              {'\n'}
-              {'\n'}
-              {'11 – Evite bebida alcoólica.'}
-              {'\n'}
-              {'\n'}
-              {'12 – Tome água várias vezes ao longo do dia.'}
-              {'\n'}
-              {'\n'}
-              {
-                '13 – Inclua como meta no seu plano de cuidado com diabetes, a consulta com um nutricionista especialista para orientação da sua alimentação ao longo da vida.'
-              }
+              {'A glicose é um carboidrato considerado uma das principais fontes de energia. O pâncreas é o órgão responsável em produzir o hormônio denominado insulina, e que é o responsável por permitir a entrada da glicose em nossas células. Quando o pâncreas está comprometido, ocorre uma deficiência na produção de insulina o que altera a captação da glicose pelas células resultando no aumento da glicose no sangue. Assim, se não forem tomadas as medidas corretas, a pessoa pode desenvolver diabetes mellitus.'}
+              {'\n\n'}
             </Text>
+            <Text style={styles.subtitle}>O que é Hipergliecemia?</Text>
+            <Text style={styles.content}>
+              {'A hiperglicemia é o excesso de açúcar no sangue, e causa:\n\n1-Cansaço;\n\n2-Visão turva;\n\n3-Polidipsia( sede em demasia);\n\n4-Poliúria (aumento do volume urinário).'}
+              {'\n\n'}
+            </Text>
+            <Text style={styles.subtitle}>O que é Hipogliecemia?</Text>
+            <Text style={styles.content}>
+              {'A Hipoglicemia é a falta de açúcar no sangue e pode causar:\n\n1-Taquicardia;\n\n2-Sudorese;\n\n3-Tremores;\n\n4-Palidez.'}
+            </Text>
+            
           </View>
         </View>
       </ScrollView>

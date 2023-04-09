@@ -42,7 +42,7 @@ const Conteudos = () => {
             <Text style={styles.subtitle}>Água é realmente importante para a saúde?</Text>
             <Text style={styles.preview}>
               A água é um dos principais alimentos. Manter seu organismo hidratado é
-              fundamental para você ter saúde. Nada substitui a....
+              fundamental para você ter saúde. Nada substitui a...
             </Text>
             <TouchableOpacity
               style={styles.contentBtn}
@@ -57,16 +57,16 @@ const Conteudos = () => {
           </View>
 
           <View style={styles.contentContainer}>
-            <Text style={styles.subtitle}>Agua é realmente importante para a saúde?</Text>
+            <Text style={styles.subtitle}>Óleo de Coco e Diabetes</Text>
             <Text style={styles.preview}>
-              A água é um dos principais alimentos. Manter seu organismo hidratado é
-              fundamental para você ter saúde. Nada substitui a....
+            O óleo de  coco é o  produto  obtido  da polpa do coco fresco maduro (espécie Cocos nucifera L.),  
+            e é  composto o óleo de coco é composto por ácidos...
             </Text>
             <TouchableOpacity
               style={styles.contentBtn}
               onPress={() => {
                 router.push(
-                  `https://diabetes.org.br/agua-e-realmente-importante-para-a-saude/`
+                  `https://diabetes.org.br/oleo-de-coco-e-diabetes/`
                 );
               }}
             >
@@ -75,16 +75,16 @@ const Conteudos = () => {
           </View>
 
           <View style={styles.contentContainer}>
-            <Text style={styles.subtitle}>Agua é realmente importante para a saúde?</Text>
+            <Text style={styles.subtitle}>Carboidratos – Quem são eles?</Text>
             <Text style={styles.preview}>
-              A água é um dos principais alimentos. Manter seu organismo hidratado é
-              fundamental para você ter saúde. Nada substitui a....
+            Os carboidratos são moléculas formadas por unidades de carbono, hidrogênio e oxigênio. 
+            Apresentam várias funções no nosso organismo, dentre as...
             </Text>
             <TouchableOpacity
               style={styles.contentBtn}
               onPress={() => {
                 router.push(
-                  `https://diabetes.org.br/agua-e-realmente-importante-para-a-saude/`
+                  `https://diabetes.org.br/carboidratos-quem-sao-eles/`
                 );
               }}
             >
@@ -93,10 +93,10 @@ const Conteudos = () => {
           </View>
 
           <View style={styles.contentContainer}>
-            <Text style={styles.subtitle}>Agua é realmente importante para a saúde?</Text>
+            <Text style={styles.subtitle}>O exercício físico é fundamental para prevenção e tratamento do diabetes mellitus</Text>
             <Text style={styles.preview}>
-              A água é um dos principais alimentos. Manter seu organismo hidratado é
-              fundamental para você ter saúde. Nada substitui a....
+            Essas são as mais recentes recomendações de exercício físico para pessoas
+            com diabetes da Associação Americana de Diabetes (ADA), atualizadas recentemente:...
             </Text>
             <TouchableOpacity
               style={styles.contentBtn}

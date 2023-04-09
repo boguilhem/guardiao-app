@@ -32,82 +32,36 @@ const EstiloVida = () => {
         <View style={styles.container}>
           <View style={styles.headerContainer}>
             <Image
-              source={icons.alimentacao}
+              source={icons.estiloDeVida}
               resizeMode="contain"
               style={styles.btnImg(30)}
             />
-            <Text style={styles.title}>Alimentação</Text>
+            <Text style={styles.title}>Estilo de Vida</Text>
           </View>
           <View style={styles.messageContainer}>
             <Text style={styles.subtitle}>Descobri que tenho diabetes...</Text>
-            <Text style={styles.subtitle}>Como deverá ficar minha alimentação?</Text>
+            <Text style={styles.subtitle}>Que mudanças devo fazer ao meu estilo de vida?</Text>
           </View>
           <View style={styles.contentContainer}>
             <Text style={styles.content}>
               {
-                'Os comitês de estudos sobre o diabetes têm orientado que as pessoas com diabetes sigam a mesma alimentação saudável recomendada à população em geral. Muitas vezes pensamos que teremos de fazer uma dieta rigorosa, mas na verdade o que se espera é um planejamento e organização dos hábitos alimentares. Isto quer dizer que teremos que ter uma maior atenção quanto às escolhas dos alimentos e a quantidade consumida.'
+                'Hábitos como manter a dieta equilibrada, vida ativa e controle constante da taxa de glicemia podem garantir bem-estar aos pacientes. “Além do monitoramento da glicose e do uso de medicação quando necessário, as pessoas podem controlar com exercícios físicos e mudanças na dieta. Muitas vezes, são as pequenas mudanças que trazem os maiores resultados”, endossa Patrícia Ruffo, nutricionista e Gerente Científico da Divisão Nutricional da Abbott no Brasil.'
               }
               {'\n'}
-              {'Tentamos resumir os primeiros passos quando nos deparamos com essa nova'}
+              {'Seja exigente com os carboidratos, Para controlar o diabetes e perder peso quando necessário, é importante cuidar da quantidade e dos tipos de carboidratos que você consome: prefira alimentos e bebidas que minimizem a reação do açúcar no sangue, enquanto fornecem quantidade necessária de fibras.'}
               {'\n'}
               {'\n'}
               {
-                '1 – Distribua os alimentos em 5 a 6 refeições ao dia. Não deixe de fazer o café da manhã! Se não puder fazê-lo em casa, leve um lanche reforçado para a escola ou trabalho.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '2 – Nos lanches, comece sempre pelas frutas (evite sucos), mas não exagere na quantidade. Nenhum tipo de fruta é proibido! '
-              }
-              {'\n'}
-              {'\n'}
-              {'3 – No almoço e jantar, continue a comer o tradicional arroz com feijão.'}
-              {'\n'}
-              {'\n'}
-              {
-                '4 - A metade do prato deve ser de vegetais coloridos, principalmente os verde-escuros e amarelos. Pode ser na forma de salada crua e/ou vegetais cozidos. Evite molhos gordurosos.'
+                'Defina metas realistas em relação a perda de peso, é mais fácil fazer mudanças graduais. Transforme os objetivos em metas menores. Quando for necessário perder peso, por exemplo, em vez de estabelecer um número em quilos, meça com uma fita métrica as alterações na cintura, quadril, coxas e braços.'
               }
               {'\n'}
               {'\n'}
               {
-                '5 – Escolha pequenas porções de carnes magras e faça rodízio entre as brancas, vermelhas ou ovo. Experimente também pratos vegetarianos.'
+                'Mantenha um diário alimentar, planeje suas refeições com antecedência e siga o plano.'
               }
               {'\n'}
               {'\n'}
-              {
-                '6 – Evite os açúcares e alimentos açucarados. Se precisar utilize adoçante em pequena quantidade. Evite os adoçantes a base de frutose.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '7 - Só opte por produtos dietéticos se tiver certeza de que o mesmo atende as suas necessidades.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '8 – Evite frituras e diminua o consumo de gorduras animais: carnes gordas, queijos (exceto os mais magros como, por exemplo, ricota, minas frescal, cottage), embutidos, manteiga, margarina, requeijão, creme de leite.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '9 – Diminua o sal. Grande parte das pessoas com diabetes também apresentam pressão arterial elevada.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '10 – Procure usar alimentos menos processados: pães integrais, aveia, arroz integral, macarrão integral, etc.'
-              }
-              {'\n'}
-              {'\n'}
-              {'11 – Evite bebida alcoólica.'}
-              {'\n'}
-              {'\n'}
-              {'12 – Tome água várias vezes ao longo do dia.'}
-              {'\n'}
-              {'\n'}
-              {
-                '13 – Inclua como meta no seu plano de cuidado com diabetes, a consulta com um nutricionista especialista para orientação da sua alimentação ao longo da vida.'
-              }
+              {'Exercite-se regularmente, de acordo com a Associação Americana de Diabetes (American Diabetes Association), exercitar-se com frequência pode reduzir a glicemia e melhorar os níveis de A1C (teste de hemoglobina glicada). A associação recomenda pelo menos 30 minutos de exercícios físicos moderados durante cinco dias por semana ou um total de 150 minutos semanais.'}
             </Text>
           </View>
         </View>
