@@ -32,82 +32,33 @@ const Medicamentos = () => {
         <View style={styles.container}>
           <View style={styles.headerContainer}>
             <Image
-              source={icons.alimentacao}
+              source={icons.medicamentos}
               resizeMode="contain"
               style={styles.btnImg(30)}
             />
-            <Text style={styles.title}>Alimentação</Text>
+            <Text style={styles.title}>Medicamentos</Text>
           </View>
           <View style={styles.messageContainer}>
             <Text style={styles.subtitle}>Descobri que tenho diabetes...</Text>
-            <Text style={styles.subtitle}>Como deverá ficar minha alimentação?</Text>
+            <Text style={styles.subtitle}>Quais os medicamentos usados no tratamento?</Text>
           </View>
           <View style={styles.contentContainer}>
             <Text style={styles.content}>
-              {
-                'Os comitês de estudos sobre o diabetes têm orientado que as pessoas com diabetes sigam a mesma alimentação saudável recomendada à população em geral. Muitas vezes pensamos que teremos de fazer uma dieta rigorosa, mas na verdade o que se espera é um planejamento e organização dos hábitos alimentares. Isto quer dizer que teremos que ter uma maior atenção quanto às escolhas dos alimentos e a quantidade consumida.'
-              }
+              {'Os medicamentos para controle do diabetes estão sempre evoluindo, e o médico é a pessoa mais capacitada para indicar aquele que se adapta ao seu perfil. Eles ajudam o pâncreas a produzir mais insulina, diminuem a absorção de carboidratos e aumentam a sensibilidade do organismo à ação da insulina.'}
               {'\n'}
-              {'Tentamos resumir os primeiros passos quando nos deparamos com essa nova'}
+              {'Lembrando que nem sempre serão necessários medicamentos por longos períodos: no caso do Diabetes Tipo 2, a mudança no estilo de vida pode ser suficiente. Outra coisa que uma pessoa que acabou de receber o diagnóstico deve saber é que os remédios são modificados ao longo do tempo, de acordo com a idade e com o comportamento da taxa de glicemia.'}
               {'\n'}
               {'\n'}
-              {
-                '1 – Distribua os alimentos em 5 a 6 refeições ao dia. Não deixe de fazer o café da manhã! Se não puder fazê-lo em casa, leve um lanche reforçado para a escola ou trabalho.'
-              }
+              {'Às vezes, o controle glicêmico só é obtido com injeções de insulina. Algumas pessoas necessitam receber esta substância ao mesmo tempo em que fazem uso de medicamentos. A frequência com que você recebe insulina depende de quanto o seu corpo ainda produz e de como o seu médico pretende controlar o seu nível glicêmico.'}
               {'\n'}
               {'\n'}
-              {
-                '2 – Nos lanches, comece sempre pelas frutas (evite sucos), mas não exagere na quantidade. Nenhum tipo de fruta é proibido! '
-              }
+              {'Outra informação relevante: tipos diferentes de insulina têm tempo de ação diferente. Sua equipe médica dirá quanto de cada tipo você necessita e com que frequência. É importante aprender a técnica correta de uso das injeções de insulina e sempre modificar o local do corpo onde são aplicadas, para evitar problemas degenerativos. Os melhores locais são a barriga, exceto a área de 5 cm ao redor do umbigo; região superior das nádegas; face anterior e lateral das coxas; e região lateral e posterior do braço.'}
               {'\n'}
               {'\n'}
-              {'3 – No almoço e jantar, continue a comer o tradicional arroz com feijão.'}
+              {'A aplicação pode ser feita por meio de seringas, canetas próprias para esse fim e também por meio das bombas de insulina. Algumas delas fazem as duas funções: medem a taxa de glicemia e aplicam a dose indicada pelo usuário. A equipe multidisciplinar poderá ajudá-lo com informações sobre cada métodos, os custos envolvidos e as formas para adquirir os equipamentos.'}
               {'\n'}
               {'\n'}
-              {
-                '4 - A metade do prato deve ser de vegetais coloridos, principalmente os verde-escuros e amarelos. Pode ser na forma de salada crua e/ou vegetais cozidos. Evite molhos gordurosos.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '5 – Escolha pequenas porções de carnes magras e faça rodízio entre as brancas, vermelhas ou ovo. Experimente também pratos vegetarianos.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '6 – Evite os açúcares e alimentos açucarados. Se precisar utilize adoçante em pequena quantidade. Evite os adoçantes a base de frutose.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '7 - Só opte por produtos dietéticos se tiver certeza de que o mesmo atende as suas necessidades.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '8 – Evite frituras e diminua o consumo de gorduras animais: carnes gordas, queijos (exceto os mais magros como, por exemplo, ricota, minas frescal, cottage), embutidos, manteiga, margarina, requeijão, creme de leite.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '9 – Diminua o sal. Grande parte das pessoas com diabetes também apresentam pressão arterial elevada.'
-              }
-              {'\n'}
-              {'\n'}
-              {
-                '10 – Procure usar alimentos menos processados: pães integrais, aveia, arroz integral, macarrão integral, etc.'
-              }
-              {'\n'}
-              {'\n'}
-              {'11 – Evite bebida alcoólica.'}
-              {'\n'}
-              {'\n'}
-              {'12 – Tome água várias vezes ao longo do dia.'}
-              {'\n'}
-              {'\n'}
-              {
-                '13 – Inclua como meta no seu plano de cuidado com diabetes, a consulta com um nutricionista especialista para orientação da sua alimentação ao longo da vida.'
-              }
+              {'Os avanços científicos na área possibilitam tratamentos para todos os tipos de casos de diabetes. Esta é uma oportunidade para você prestar mais atenção à sua saúde e adquirir responsabilidades sobre as mudanças.'}
             </Text>
           </View>
         </View>

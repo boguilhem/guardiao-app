@@ -32,66 +32,50 @@ const Complicacoes = () => {
         <View style={styles.container}>
           <View style={styles.headerContainer}>
             <Image
-              source={icons.alimentacao}
+              source={icons.complicacoes}
               resizeMode="contain"
               style={styles.btnImg(30)}
             />
-            <Text style={styles.title}>Alimentação</Text>
+            <Text style={styles.title}>Complicações</Text>
           </View>
           <View style={styles.messageContainer}>
             <Text style={styles.subtitle}>Descobri que tenho diabetes...</Text>
-            <Text style={styles.subtitle}>Como deverá ficar minha alimentação?</Text>
+            <Text style={styles.subtitle}>Quais complicações podem ser causadas pela doença?</Text>
           </View>
           <View style={styles.contentContainer}>
             <Text style={styles.content}>
               {
-                'Os comitês de estudos sobre o diabetes têm orientado que as pessoas com diabetes sigam a mesma alimentação saudável recomendada à população em geral. Muitas vezes pensamos que teremos de fazer uma dieta rigorosa, mas na verdade o que se espera é um planejamento e organização dos hábitos alimentares. Isto quer dizer que teremos que ter uma maior atenção quanto às escolhas dos alimentos e a quantidade consumida.'
-              }
-              {'\n'}
-              {'Tentamos resumir os primeiros passos quando nos deparamos com essa nova'}
-              {'\n'}
-              {'\n'}
-              {
-                '1 – Distribua os alimentos em 5 a 6 refeições ao dia. Não deixe de fazer o café da manhã! Se não puder fazê-lo em casa, leve um lanche reforçado para a escola ou trabalho.'
+                'Duas das principais complicalçoes são a Cetoacidose diabética e a Neuropatia diabética'
               }
               {'\n'}
               {'\n'}
               {
-                '2 – Nos lanches, comece sempre pelas frutas (evite sucos), mas não exagere na quantidade. Nenhum tipo de fruta é proibido! '
+                'Cetoacidose Diabética:'
               }
               {'\n'}
               {'\n'}
-              {'3 – No almoço e jantar, continue a comer o tradicional arroz com feijão.'}
+              {'A Cetoacidose diabética ocorre principalmente no diabetes tipo 1, mas pode também ocorrer no tipo 2. Acontece quando os níveis de açúcar (glicose) no sangue do paciente diabético encontram-se muito altos e estão acompanhados do aumento da quantidade de cetonas no sangue também. Suas principais causas são:'}
               {'\n'}
               {'\n'}
-              {
-                '4 - A metade do prato deve ser de vegetais coloridos, principalmente os verde-escuros e amarelos. Pode ser na forma de salada crua e/ou vegetais cozidos. Evite molhos gordurosos.'
-              }
+
+              {'Omissão do tratamento com insulina ou remédios; '}
+              {'\n'}
+              {'Mau funcionamento da Bomba de Insulina;'}
               {'\n'}
               {'\n'}
-              {
-                '5 – Escolha pequenas porções de carnes magras e faça rodízio entre as brancas, vermelhas ou ovo. Experimente também pratos vegetarianos.'
-              }
+              {'Doenças agudas: infecções (urinária, pulmonar, gripe), infarto do miocárdio, hemorragia digestiva, entre outras;'}
               {'\n'}
               {'\n'}
-              {
-                '6 – Evite os açúcares e alimentos açucarados. Se precisar utilize adoçante em pequena quantidade. Evite os adoçantes a base de frutose.'
-              }
+              {'Distúrbios endócrinos: feocromocitoma, hipertireoidismo, acromegalia;'}
               {'\n'}
               {'\n'}
-              {
-                '7 - Só opte por produtos dietéticos se tiver certeza de que o mesmo atende as suas necessidades.'
-              }
+              {'Drogas (corticóides, agonistas adrenérgicos, fenitoína, beta-bloqueadores, antipsicóticos, álcool, cocaína);'}
               {'\n'}
               {'\n'}
-              {
-                '8 – Evite frituras e diminua o consumo de gorduras animais: carnes gordas, queijos (exceto os mais magros como, por exemplo, ricota, minas frescal, cottage), embutidos, manteiga, margarina, requeijão, creme de leite.'
-              }
+              {'Desidratação: ingestão deficiente de água, diarreia, sauna; Ingestão excessiva de refrigerantes ou líquidos açucarados.'}
               {'\n'}
               {'\n'}
-              {
-                '9 – Diminua o sal. Grande parte das pessoas com diabetes também apresentam pressão arterial elevada.'
-              }
+              {'Esta é uma emergência médica e o Pronto Socorro deve ser procurado imediatamente.'}
               {'\n'}
               {'\n'}
               {
@@ -99,15 +83,10 @@ const Complicacoes = () => {
               }
               {'\n'}
               {'\n'}
-              {'11 – Evite bebida alcoólica.'}
+              {'Neuropatia Diabética:'}
               {'\n'}
               {'\n'}
-              {'12 – Tome água várias vezes ao longo do dia.'}
-              {'\n'}
-              {'\n'}
-              {
-                '13 – Inclua como meta no seu plano de cuidado com diabetes, a consulta com um nutricionista especialista para orientação da sua alimentação ao longo da vida.'
-              }
+              {'Você sabe o que são nervos periféricos? Eles carregam as informações que saem do cérebro e as que chegam até ele, além de sinais da medula espinhal para o resto do corpo. Os danos a esses nervos, condição chamada de neuropatia periférica, fazem com que esse mecanismo não funcione bem. A neuropatia pode afetar um único nervo, um grupo de nervos ou nervos no corpo inteiro.'}
             </Text>
           </View>
         </View>
