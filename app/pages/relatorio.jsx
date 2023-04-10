@@ -28,7 +28,6 @@ const screenWidth = Dimensions.get('window').width;
 let STORAGE_KEY = '@user_input';
 
 const Relatorio = () => {
-  const router = useRouter();
   const [inputValue, setInputValue] = useState('');
   const [inputArray, SetInputArray] = useState([0]);
   const [historyArray, SetHistoryArray] = useState([0]);
@@ -226,7 +225,7 @@ const Relatorio = () => {
               style={styles.btnImg(40)}
             />
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.btnInput}
             onPress={() => {
               forceUpdate();
@@ -238,7 +237,7 @@ const Relatorio = () => {
               resizeMode="contain"
               style={styles.btnImg(40)}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         <View style={styles.textContainer}>
