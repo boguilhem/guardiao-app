@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   ScrollView,
   SafeAreaView,
@@ -10,7 +9,7 @@ import {
 import { Stack, useRouter } from 'expo-router';
 
 import styles from '../../styles/dicasRapidas.style.js';
-import { COLORS, icons, images, SIZES } from '../../constants';
+import { COLORS, icons, images } from '../../constants';
 import { ScreenHeaderBtn } from '../../components';
 
 const DicasRapidas = () => {
@@ -38,10 +37,6 @@ const DicasRapidas = () => {
             />
             <Text style={styles.title}>Dicas Rápidas</Text>
           </View>
-          {/* <View style={styles.headerContainer}>
-        <Text style={styles.subtitle}>Descobri que tenho diabetes...</Text>
-        <Text style={styles.subtitle}>Como deverá ficar minha alimentação?</Text>
-      </View> */}
 
           <View>
             <View style={styles.cardsContainer}>

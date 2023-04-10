@@ -22,6 +22,8 @@ import estiloDeVida from '../assets/icons/estiloDeVida.png';
 import emergencia from '../assets/icons/emergencia.png';
 import complicacoes from '../assets/icons/complicacoes.png';
 import nivelGlicose from '../assets/icons/nivelGlicose.png';
+import circleButton from '../assets/icons/circleButton.png';
+import clearIcon from '../assets/icons/clearIcon.png';
 
 export default {
   heart,
@@ -48,4 +50,6 @@ export default {
   emergencia,
   complicacoes,
   nivelGlicose,
+  circleButton,
+  clearIcon,
 };
