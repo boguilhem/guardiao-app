@@ -14,6 +14,22 @@ const Welcome = () => {
         <Text style={styles.welcomeMessage}>Seu assistente pessoal contra diabetes</Text>
       </View>
 
+      <View style={styles.cardsContainer}>
+        <TouchableOpacity
+          style={styles.cardBtn}
+          onPress={() => {
+            router.push(`/pages/carboidratos`);
+          }}
+        >
+          <Image
+            source={icons.carboidratos}
+            resizeMode="contain"
+            style={styles.btnImg(30)}
+          />
+          <Text style={styles.btnText}>Contagem Carboidratos</Text>
+        </TouchableOpacity>
+      </View>
+
       <View>
         <View style={styles.cardsContainer}>
           <TouchableOpacity
@@ -28,22 +44,6 @@ const Welcome = () => {
               style={styles.btnImg(30)}
             />
             <Text style={styles.btnText}>Alarme Noturno</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.cardsContainer}>
-          <TouchableOpacity
-            style={styles.cardBtn}
-            onPress={() => {
-              router.push(`/pages/dicasRapidas`);
-            }}
-          >
-            <Image
-              source={icons.dicasRapidas}
-              resizeMode="contain"
-              style={styles.btnImg(30)}
-            />
-            <Text style={styles.btnText}>Dicas Rápidas</Text>
           </TouchableOpacity>
         </View>
 
@@ -83,22 +83,6 @@ const Welcome = () => {
           <TouchableOpacity
             style={styles.cardBtn}
             onPress={() => {
-              router.push(`/pages/carboidratos`);
-            }}
-          >
-            <Image
-              source={icons.carboidratos}
-              resizeMode="contain"
-              style={styles.btnImg(30)}
-            />
-            <Text style={styles.btnText}>Contagem Carboidratos</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.cardsContainer}>
-          <TouchableOpacity
-            style={styles.cardBtn}
-            onPress={() => {
               router.push(`/pages/conteudo`);
             }}
           >
@@ -108,6 +92,22 @@ const Welcome = () => {
               style={styles.btnImg(30)}
             />
             <Text style={styles.btnText}>Conteúdos</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.cardsContainer}>
+          <TouchableOpacity
+            style={styles.cardBtn}
+            onPress={() => {
+              router.push(`/pages/dicasRapidas`);
+            }}
+          >
+            <Image
+              source={icons.dicasRapidas}
+              resizeMode="contain"
+              style={styles.btnImg(30)}
+            />
+            <Text style={styles.btnText}>Dicas Rápidas</Text>
           </TouchableOpacity>
         </View>
       </View>

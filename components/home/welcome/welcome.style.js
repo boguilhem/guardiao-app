@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     // width: '100%',
     marginTop: SIZES.medium,
     paddingVertical: SIZES.medium,
-    paddingHorizontal: SIZES.xxLarge,
+    paddingHorizontal: SIZES.xLarge,
     backgroundColor: COLORS.skyBlue,
     alignItems: 'center',
     borderRadius: SIZES.small,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     fontFamily: FONT.regular,
     fontSize: SIZES.medium,
     textAlign: 'center',
-    // marginLeft: SIZES.xxxLarge,
+    marginLeft: SIZES.small,
     width: '80%',
   },
 
