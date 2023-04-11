@@ -1,14 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  FlatList,
-  // Button,
-  TouchableOpacity,
-  Image,
-  SafeAreaView,
-} from 'react-native';
+import { View, Text, TextInput, FlatList, Image, SafeAreaView } from 'react-native';
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 
 import { Stack, useRouter } from 'expo-router';
@@ -18,11 +9,10 @@ import { Audio } from 'expo-av';
 
 import { Button, Switch } from 'react-native-paper';
 import { COLORS, icons, images } from '../../constants';
-import { ScreenHeaderBtn, SwitchComponent, PaperButton } from '../../components';
+import { ScreenHeaderBtn } from '../../components';
 import styles from '../../styles/alarmeNoturno.style.js';
 
 const savedContacts = [];
-alarmPlaying = false;
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: false,
@@ -31,8 +21,7 @@ Notifications.setNotificationHandler({
   }),
 });
 
-const AlarmeNoturno = () => {
-  const router = useRouter();
+const Contatos = () => {
   const [contacts, setContacts] = useState([]);
   const [contact, setContact] = useState('');
   const [expoPushToken, setExpoPushToken] = useState('');
@@ -44,7 +33,6 @@ const AlarmeNoturno = () => {
   const [show, setShow] = useState(false);
   const [sound, setSound] = useState();
   const [showCancel, setShowCancel] = useState(false);
-  const [isSwitchOn, setIsSwitchOn] = useState(false);
 
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) => setExpoPushToken(token));
@@ -87,14 +75,6 @@ const AlarmeNoturno = () => {
     };
   }, []);
 
-  const onToggleSwitch = () => {
-    setIsSwitchOn(!isSwitchOn);
-
-    {
-      active ? disableTimer() : enableTimer();
-    }
-  };
-
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
     setDate(currentDate);
@@ -108,19 +88,6 @@ const AlarmeNoturno = () => {
       is24Hour: true,
       display: 'spinner',
     });
-  };
-
-  const showTimepicker = () => {
-    showMode('time');
-  };
-  const disableTimer = () => {
-    setActive(false);
-    Notifications.cancelAllScheduledNotificationsAsync();
-  };
-  const enableTimer = () => {
-    Notifications.cancelAllScheduledNotificationsAsync();
-    setActive(true);
-    schedulePushNotification();
   };
 
   async function schedulePushNotification() {
@@ -192,23 +159,6 @@ const AlarmeNoturno = () => {
     });
   };
 
-  async function playSound() {
-    console.log('Loading Sound');
-    const { sound } = await Audio.Sound.createAsync(
-      require('../../assets/sounds/alarm.mp3')
-    );
-    setSound(sound);
-
-    console.log('Playing Sound');
-    await sound.setIsLoopingAsync(true);
-    await sound.playAsync();
-  }
-  const stopAlarm = () => {
-    alarmPlaying = false;
-    setShowCancel(false);
-    sound.unloadAsync();
-  };
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <Stack.Screen
@@ -232,102 +182,23 @@ const AlarmeNoturno = () => {
           <Text style={styles.title}>Alarme Noturno</Text>
         </View>
 
-        <View style={styles.cardsContainer}>
-          <View style={styles.cardBtn}>
-            <View>
-              <Text style={styles.hourText}>
-                {date.getHours().toString().padStart(2, '0')}:
-                {date.getMinutes().toString().padStart(2, '0')}
-              </Text>
-              <View style={styles.alarmContainer}>
-                <Text>Todos os Dias</Text>
-                {/* <SwitchComponent
-                  pressHandler={() => {
-                    enableTimer;
-                  }}
-                /> */}
-                <Switch
-                  value={isSwitchOn}
-                  onValueChange={onToggleSwitch}
-                  color={'lightgreen'}
-                  style={styles.alarmContainerSpacing}
-                />
-                {/* <TouchableOpacity onPress={() => {}} style={styles.alarmContainerSpacing}>
-                  <Image
-                    source={icons.clearIcon}
-                    resizeMode="contain"
-                    style={styles.btnImg(20)}
-                  />
-                </TouchableOpacity> */}
-                {/* <TouchableOpacity onPress={handlePress}>
-                  <Image
-                    source={iconUrl}
-                    resizeMode="contain"
-                    style={styles.btnImg(dimension)}
-                  />
-                </TouchableOpacity> */}
-              </View>
-            </View>
-          </View>
-        </View>
-
-        <Button
-          icon="clock"
-          mode="elevated"
-          buttonColor="#0077e0"
-          textColor="white"
-          onPress={showTimepicker}
-        >
-          SELECIONAR UM HORÁRIO
-        </Button>
-
-        {/* <Button mode="contained" textColor="white" onPress={enableTimer}>
-          Ativar Alarme
-        </Button>
-
-        {active ? (
-          <Button mode="contained" textColor="white" onPress={disableTimer}>
-            Desativar Alarme
-          </Button>
-        ) : (
-          ''
-        )} */}
-
-        {/* {active ? (
-          <Text>
-            Alarme ativado para: {date.getHours().toString().padStart(2, '0')}:
-            {date.getMinutes().toString().padStart(2, '0')}
-          </Text>
-        ) : (
-          <Text>Alarme Desativado</Text>
-        )} */}
-        {show && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={date}
-            mode={mode}
-            is24Hour={true}
-            onChange={onChange}
-          />
-        )}
-        {/* <TextInput
+        <TextInput
           style={{
             width: '80%',
             borderColor: 'black',
             borderWidth: 1,
             padding: 10,
           }}
-          placeholder=""
+          placeholder="Nome do Contato"
           onChangeText={contactInputHandler}
           value={contact}
-        /> */}
+        />
 
-        {/* <Button title="Adicionar Contato" onPress={addContactHandler} /> */}
-        {/* <Button mode="contained" textColor="white" onPress={addContactHandler}>
+        <Button mode="contained" textColor="white" onPress={addContactHandler}>
           Adicionar Contato
-        </Button> */}
+        </Button>
 
-        {/* <Text>Seus contatos:</Text> */}
+        <Text>Seus contatos:</Text>
 
         <FlatList
           data={contacts}
@@ -362,24 +233,9 @@ const AlarmeNoturno = () => {
         ) : (
           ''
         )}
-
-        <View>
-          <Button
-            mode="elevated"
-            buttonColor="#D9D9D9"
-            textColor="black"
-            icon={'contacts'}
-            onPress={() => {
-              router.push(`/pages/contatos`);
-            }}
-            style={{ height: '30%', justifyContent: 'center' }}
-          >
-            Contatos
-          </Button>
-        </View>
       </View>
     </SafeAreaView>
   );
 };
 
-export default AlarmeNoturno;
+export default Contatos;

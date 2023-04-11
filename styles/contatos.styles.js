@@ -28,6 +28,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: SIZES.xLarge,
+    marginBottom: SIZES.xLarge,
+    flexDirection: 'row',
+  },
+
+  savedContactsContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    marginTop: SIZES.xxxLarge,
     marginBottom: SIZES.xxxLarge,
     flexDirection: 'row',
   },
@@ -38,31 +46,15 @@ const styles = StyleSheet.create({
     marginTop: SIZES.medium,
   },
 
-  cardBtn: {
-    marginTop: SIZES.medium,
-    paddingBottom: SIZES.small,
-    paddingHorizontal: SIZES.xLarge,
-    backgroundColor: COLORS.skyBlue,
-    alignItems: 'center',
-    borderRadius: SIZES.small,
-    flexDirection: 'row',
-  },
-
-  hourText: {
-    fontFamily: FONT.regular,
-    fontSize: SIZES.xLarge,
-    width: '80%',
-  },
-
-  alarmContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    maxHeight: '30%',
-  },
-
-  alarmContainerSpacing: {
-    marginLeft: SIZES.medium,
-  },
+  // cardBtn: {
+  //   marginTop: SIZES.medium,
+  //   paddingBottom: SIZES.small,
+  //   paddingHorizontal: SIZES.xLarge,
+  //   backgroundColor: COLORS.skyBlue,
+  //   alignItems: 'center',
+  //   borderRadius: SIZES.small,
+  //   flexDirection: 'row',
+  // },
 
   btnInput: {
     width: '100%',
@@ -115,10 +107,32 @@ const styles = StyleSheet.create({
   //   justifyContent: 'center',
   //   alignItems: 'center',
   // },
+
+  dataContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: SIZES.large,
+    flexDirection: 'row',
+  },
+
+  dataText: {
+    fontFamily: FONT.regular,
+    fontSize: SIZES.medium,
+    paddingHorizontal: SIZES.xSmall,
+    width: '40%',
+    height: 30,
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: COLORS.gray2,
+    textAlignVertical: 'bottom',
+    textAlign: 'left',
+    marginRight: SIZES.medium,
+  },
+
   btnImg: (dimension) => ({
     width: dimension,
     height: dimension,
-    // borderRadius: SIZES.small / 1.25,
   }),
 });
 

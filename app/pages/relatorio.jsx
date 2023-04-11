@@ -212,7 +212,6 @@ const Relatorio = () => {
             keyboardType="numeric"
           ></TextInput>
           <TouchableOpacity
-            style={styles.btnInput}
             onPress={() => {
               onSubmitEditing();
               setInputValue('');
