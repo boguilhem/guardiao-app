@@ -54,10 +54,11 @@ const styles = StyleSheet.create({
 
   alarmContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
 
   alarmContainerSpacing: {
-    marginRight: SIZES.medium,
+    marginLeft: SIZES.medium,
   },
 
   // messageContainer: {

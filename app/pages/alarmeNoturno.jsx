@@ -17,7 +17,7 @@ import * as Notifications from 'expo-notifications';
 import { Audio } from 'expo-av';
 
 import { COLORS, icons, images } from '../../constants';
-import { ScreenHeaderBtn } from '../../components';
+import { ScreenHeaderBtn, SwitchComponent } from '../../components';
 import styles from '../../styles/alarmeNoturno.style.js';
 
 const savedContacts = [];
@@ -225,12 +225,22 @@ const AlarmeNoturno = () => {
             <View>
               <Text style={styles.hourText}>00:00</Text>
               <View style={styles.alarmContainer}>
-                <Text style={styles.alarmContainerSpacing}>Todos os Dias</Text>
-                <Image
-                  source={icons.carboidratos}
-                  resizeMode="contain"
-                  style={styles.btnImg(30)}
-                />
+                <Text>Todos os Dias</Text>
+                <SwitchComponent />
+                <TouchableOpacity onPress={() => {}} style={styles.alarmContainerSpacing}>
+                  <Image
+                    source={icons.clearIcon}
+                    resizeMode="contain"
+                    style={styles.btnImg(20)}
+                  />
+                </TouchableOpacity>
+                {/* <TouchableOpacity onPress={handlePress}>
+                  <Image
+                    source={iconUrl}
+                    resizeMode="contain"
+                    style={styles.btnImg(dimension)}
+                  />
+                </TouchableOpacity> */}
               </View>
             </View>
           </View>
