@@ -9,9 +9,41 @@ const Welcome = () => {
   return (
     <View style={styles.container}>
       <View style={styles.welcomeContainer}>
-        <Text style={styles.userName}>Hello Fulano</Text>
+        <Text style={styles.userName}>Olá Eduardo</Text>
         <Text style={styles.userName}>Bem vindo ao Guardião</Text>
         <Text style={styles.welcomeMessage}>Seu assistente pessoal contra diabetes</Text>
+      </View>
+
+      <View style={styles.cardsContainer}>
+        <TouchableOpacity
+          style={styles.cardBtn}
+          onPress={() => {
+            router.push(`/pages/carboidratos`);
+          }}
+        >
+          <Image
+            source={icons.carboidratos}
+            resizeMode="contain"
+            style={styles.btnImg(30)}
+          />
+          <Text style={styles.btnText}>Contagem Carboidratos</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.cardsContainer}>
+        <TouchableOpacity
+          style={styles.cardBtn}
+          onPress={() => {
+            router.push(`/pages/relatorio`);
+          }}
+        >
+          <Image
+            source={icons.relatorio}
+            resizeMode="contain"
+            style={styles.btnImg(30)}
+          />
+          <Text style={styles.btnText}>Histórico Glicêmico</Text>
+        </TouchableOpacity>
       </View>
 
       <View>
@@ -31,39 +63,7 @@ const Welcome = () => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.cardsContainer}>
-          <TouchableOpacity
-            style={styles.cardBtn}
-            onPress={() => {
-              router.push(`/pages/dicasRapidas`);
-            }}
-          >
-            <Image
-              source={icons.dicasRapidas}
-              resizeMode="contain"
-              style={styles.btnImg(30)}
-            />
-            <Text style={styles.btnText}>Dicas Rápidas</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.cardsContainer}>
-          <TouchableOpacity
-            style={styles.cardBtn}
-            onPress={() => {
-              router.push(`/pages/relatorio`);
-            }}
-          >
-            <Image
-              source={icons.relatorio}
-              resizeMode="contain"
-              style={styles.btnImg(30)}
-            />
-            <Text style={styles.btnText}>Histórico Glicêmico</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.cardsContainer}>
+        {/* <View style={styles.cardsContainer}>
           <TouchableOpacity
             style={styles.cardBtn}
             onPress={() => {
@@ -77,23 +77,7 @@ const Welcome = () => {
             />
             <Text style={styles.btnText}>Lembretes</Text>
           </TouchableOpacity>
-        </View>
-
-        <View style={styles.cardsContainer}>
-          <TouchableOpacity
-            style={styles.cardBtn}
-            onPress={() => {
-              router.push(`/pages/carboidratos`);
-            }}
-          >
-            <Image
-              source={icons.carboidratos}
-              resizeMode="contain"
-              style={styles.btnImg(30)}
-            />
-            <Text style={styles.btnText}>Contagem Carboidratos</Text>
-          </TouchableOpacity>
-        </View>
+        </View> */}
 
         <View style={styles.cardsContainer}>
           <TouchableOpacity
@@ -108,6 +92,22 @@ const Welcome = () => {
               style={styles.btnImg(30)}
             />
             <Text style={styles.btnText}>Conteúdos</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.cardsContainer}>
+          <TouchableOpacity
+            style={styles.cardBtn}
+            onPress={() => {
+              router.push(`/pages/dicasRapidas`);
+            }}
+          >
+            <Image
+              source={icons.dicasRapidas}
+              resizeMode="contain"
+              style={styles.btnImg(30)}
+            />
+            <Text style={styles.btnText}>Dicas Rápidas</Text>
           </TouchableOpacity>
         </View>
       </View>

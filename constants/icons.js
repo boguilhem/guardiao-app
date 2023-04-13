@@ -24,6 +24,7 @@ import complicacoes from '../assets/icons/complicacoes.png';
 import nivelGlicose from '../assets/icons/nivelGlicose.png';
 import circleButton from '../assets/icons/circleButton.png';
 import clearIcon from '../assets/icons/clearIcon.png';
+import avatarUser from '../assets/icons/avatarUser.png';
 
 export default {
   heart,
@@ -52,4 +53,5 @@ export default {
   nivelGlicose,
   circleButton,
   clearIcon,
+  avatarUser,
 };
