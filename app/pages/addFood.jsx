@@ -251,7 +251,7 @@ const AddFood = () => {
             >
               Adicionar
             </Button>
-            <Button
+            {/* <Button
               mode="elevated"
               buttonColor={COLORS.skyBlue}
               textColor="white"
@@ -270,7 +270,7 @@ const AddFood = () => {
               onPress={clearStorage}
             >
               Clear
-            </Button>
+            </Button> */}
           </View>
         </View>
 
