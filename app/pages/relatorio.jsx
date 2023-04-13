@@ -13,15 +13,15 @@ import {
   Alert,
 } from 'react-native';
 
+import { Dimensions } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Stack, useRouter } from 'expo-router';
 
 import styles from '../../styles/relatorio.style.js';
 import { COLORS, icons, images, SIZES } from '../../constants';
 import { ScreenHeaderBtn, GlicemicData } from '../../components';
-import { Dimensions } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -89,10 +89,12 @@ const Relatorio = () => {
       if (inputArray[0] === 0) {
         SetInputArray([parseInt(inputValue)]);
         SetHistoryArray([[inputValue, showDate()]]);
+        console.log('Console 1:', inputArray, historyArray);
       } else {
         data.datasets[0].data.push(parseInt(inputValue));
         tuplesGraph.push([inputValue, showDate()]);
       }
+      console.log('Console 2:', inputArray, historyArray);
       SetGlobalArray([inputArray, historyArray]);
 
       saveData([inputArray, historyArray]);

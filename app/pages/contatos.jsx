@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,190 +7,94 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 
-import { Stack, useRouter } from 'expo-router';
-import * as Device from 'expo-device';
-import * as Notifications from 'expo-notifications';
-import { Audio } from 'expo-av';
+import { Button, TextInput } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { Button, Switch, TextInput } from 'react-native-paper';
-import { COLORS, icons, images, SIZES } from '../../constants';
+import { Stack } from 'expo-router';
+
+import { COLORS, icons, images } from '../../constants';
 import { ScreenHeaderBtn } from '../../components';
 import styles from '../../styles/contatos.styles.js';
 
 const savedContacts = [];
-// Notifications.setNotificationHandler({
-//   handleNotification: async () => ({
-//     shouldShowAlert: false,
-//     shouldPlaySound: false,
-//     shouldSetBadge: false,
-//   }),
-// });
+
+let STORAGE_KEY = '@user_contacts';
 
 const Contatos = () => {
   const [contacts, setContacts] = useState([]);
   const [contact, setContact] = useState(['', '']);
-  // const [expoPushToken, setExpoPushToken] = useState('');
-  // const [notification, setNotification] = useState(false);
-  // const notificationListener = useRef();
-  // const responseListener = useRef();
-  // const [date, setDate] = useState(new Date());
-  // const [active, setActive] = useState(false);
-  // const [show, setShow] = useState(false);
-  // const [sound, setSound] = useState();
-  // const [showCancel, setShowCancel] = useState(false);
+  const [textInputName, setTextInputName] = useState('');
+  const [textInputEmail, setTextInputEmail] = useState('');
 
-  // useEffect(() => {
-  //   registerForPushNotificationsAsync().then((token) => setExpoPushToken(token));
-
-  //   notificationListener.current = Notifications.addNotificationReceivedListener(
-  //     (notification) => {
-  //       setNotification(notification);
-  //       //aqui recebe notificacao
-  //       alarmPlaying = true;
-  //       playSound();
-  //       setShowCancel(true);
-  //       setTimeout(() => {
-  //         if (alarmPlaying) {
-  //           fetch('http://192.168.25.4:3000/', {
-  //             method: 'POST',
-  //             headers: {
-  //               Accept: 'application/json',
-  //               'Content-Type': 'application/json',
-  //             },
-  //             body: JSON.stringify({
-  //               names: savedContacts,
-  //             }),
-  //           });
-  //           console.log('sent:');
-  //           console.log(savedContacts);
-  //         }
-  //       }, 5000);
-  //     }
-  //   );
-
-  //   responseListener.current = Notifications.addNotificationResponseReceivedListener(
-  //     (response) => {
-  //       console.log(response);
-  //     }
-  //   );
-
-  //   return () => {
-  //     Notifications.removeNotificationSubscription(notificationListener.current);
-  //     Notifications.removeNotificationSubscription(responseListener.current);
-  //   };
-  // }, []);
-
-  // const onChange = (event, selectedDate) => {
-  //   const currentDate = selectedDate;
-  //   setDate(currentDate);
-  // };
-
-  // const showMode = (currentMode) => {
-  //   DateTimePickerAndroid.open({
-  //     value: date,
-  //     onChange,
-  //     mode: currentMode,
-  //     is24Hour: true,
-  //     display: 'spinner',
-  //   });
-  // };
-
-  // async function schedulePushNotification() {
-  //   console.log(date.getHours());
-  //   console.log(date.getMinutes());
-  //   await Notifications.scheduleNotificationAsync({
-  //     content: {
-  //       title: '',
-  //       body: '',
-  //       data: { data: '' },
-  //     },
-  //     trigger: { hour: date.getHours(), minute: date.getMinutes(), repeats: true },
-  //   });
-  // }
-
-  // async function registerForPushNotificationsAsync() {
-  //   let token;
-
-  //   if (Platform.OS === 'android') {
-  //     await Notifications.setNotificationChannelAsync('default', {
-  //       name: 'default',
-  //       importance: Notifications.AndroidImportance.MAX,
-  //       vibrationPattern: [0, 250, 250, 250],
-  //       lightColor: '#FF231F7C',
-  //     });
-  //   }
-
-  //   if (Device.isDevice) {
-  //     const { status: existingStatus } = await Notifications.getPermissionsAsync();
-  //     let finalStatus = existingStatus;
-  //     if (existingStatus !== 'granted') {
-  //       const { status } = await Notifications.requestPermissionsAsync();
-  //       finalStatus = status;
-  //     }
-  //     if (finalStatus !== 'granted') {
-  //       alert('Failed to get push token for push notification!');
-  //       return;
-  //     }
-  //     token = (await Notifications.getExpoPushTokenAsync()).data;
-  //     console.log(token);
-  //   } else {
-  //     alert('Must use physical device for Push Notifications');
-  //   }
-
-  //   return token;
-  // }
-
-  const contactInputHandler = (enteredContact) => {
-    if (checkTextInput()) {
-      setContact([textInputName, textInputEmail]);
-      console.log('Salvando Contatos...');
-
-      //
-      addContactHandler();
+  const saveData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem(STORAGE_KEY, jsonValue);
+    } catch (e) {
+      alert('Failed to save the data to the storage');
     }
   };
+
+  const readData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
+      if (jsonValue !== null) {
+        await setContacts(JSON.parse(jsonValue));
+      }
+    } catch (e) {
+      alert('Failed to fetch the input from storage');
+    }
+  };
+
+  const clearStorage = async () => {
+    try {
+      await AsyncStorage.clear();
+      alert('Storage successfully cleared!');
+    } catch (e) {
+      alert('Failed to clear the async storage.');
+    }
+  };
+
+  useEffect(() => {
+    readData();
+  }, []);
+
   const nameInputHandler = (enteredContact) => {
     setTextInputName(enteredContact);
-    setContact([textInputName, textInputEmail]);
-    console.log('Salvando Contatos...');
-
-    addContactHandler();
+    setContact([enteredContact, textInputEmail]);
+    // console.log('Salvando Nome...');
   };
   const emailInputHandler = (enteredContact) => {
     setTextInputEmail(enteredContact);
-    setContact([textInputName, textInputEmail]);
-    console.log('Salvando Contatos...');
-
-    addContactHandler();
+    setContact([textInputName, enteredContact]);
+    // console.log('Salvando Email...');
   };
 
   const addContactHandler = () => {
-    console.log('Chegou aqui 1');
-    if (!contacts.some((item) => item.key == contact) && contact[0] != '') {
-      console.log('Chegou aqui 2');
-      setContacts((currentContacts) => [
-        ...currentContacts,
-        { key: contact, value: contact },
-      ]);
-      savedContacts.push(contact);
-      console.log('SavedContacts:', savedContacts);
+    if (checkTextInput()) {
+      if (!contacts.some((item) => item.key == contact) && contact[0] != '') {
+        setContacts((currentContacts) => [
+          ...currentContacts,
+          { key: contact[0], value: contact[1] },
+        ]);
+
+        saveData([...contacts, { key: contact[0], value: contact[1] }]);
+        savedContacts.push(contact);
+      }
+      setContact(['', '']);
+      setTextInputName('');
+      setTextInputEmail('');
     }
-    // setContact('');
-    setContact(['', '']);
   };
 
   const removeContactHandler = (contactId) => {
     savedContacts.splice(savedContacts.indexOf(contactId), 1);
-    console.log(savedContacts);
     setContacts((currentContacts) => {
       return currentContacts.filter((contact) => contact.key !== contactId);
     });
+    saveData([...contacts].filter((contact) => contact.key !== contactId));
   };
-
-  const [textInputName, setTextInputName] = useState('');
-  const [textInputEmail, setTextInputEmail] = useState('');
 
   const checkTextInput = () => {
     //Check for the Name TextInput
@@ -204,8 +108,7 @@ const Contatos = () => {
       return false;
     }
     //Checked Successfully
-    //Do whatever you want
-    alert('Success');
+    // alert('Success');
     return true;
   };
 
@@ -254,10 +157,8 @@ const Contatos = () => {
             dense
             type="flat"
             label="Nome do Contato"
-            // value={contact}
             value={textInputName}
-            // onChangeText={contactInputHandler}
-            onChangeText={setTextInputName}
+            onChangeText={nameInputHandler}
           />
 
           <TextInput
@@ -272,9 +173,7 @@ const Contatos = () => {
             type="flat"
             label="Email do Contato"
             value={textInputEmail}
-            // value={contact}
-            // onChangeText={contactInputHandler}
-            onChangeText={setTextInputEmail}
+            onChangeText={emailInputHandler}
           />
 
           <Button
@@ -282,43 +181,24 @@ const Contatos = () => {
             buttonColor="#866bcf"
             mode="elevated"
             textColor="white"
-            // onPress={addContactHandler}
-            onPress={contactInputHandler}
+            onPress={addContactHandler}
           >
             Adicionar Contato
           </Button>
-          <Button
+          {/* <Button
             style={{ marginTop: 40 }}
             buttonColor="#866bcf"
             mode="elevated"
             textColor="white"
-            // onPress={addContactHandler}
             onPress={() => {
-              console.log(contact, contacts);
+              console.log('Contact: ', contact);
+              console.log('Contacts: ', contacts);
+              console.log('savedContacts: ', savedContacts);
+              // clearStorage();
             }}
           >
             Console
-          </Button>
-
-          {/* TESTE */}
-          {/* <TextInput
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-            onChangeText={(text) => this.setState({ text })}
-            value={this.state.text}
-          />
-          {!!this.state.nameError && (
-            <Text style={{ color: 'red' }}>{this.state.nameError}</Text>
-          )}
-          <Button
-            onPress={() => {
-              if (this.state.text.trim() === '') {
-                this.setState(() => ({ nameError: 'First name required.' }));
-              } else {
-                this.setState(() => ({ nameError: null }));
-              }
-            }}
-            title="Login"
-          /> */}
+          </Button> */}
         </View>
 
         <View style={styles.savedContactsContainer}>
@@ -331,15 +211,17 @@ const Contatos = () => {
         </View>
 
         <FlatList
-          data={['joao', 'jose', 'ronaldo', 'amauri']}
-          renderItem={({ item }) =>
+          data={contacts}
+          renderItem={(contactData) =>
             contacts[0] === 0 ? (
               <></>
             ) : (
               <View style={styles.dataContainer}>
-                <Text style={styles.dataText}>{item}</Text>
-                <Text style={styles.dataText}>email</Text>
-                <TouchableOpacity onPress={() => {}}>
+                <Text style={styles.dataName}>{contactData.item.key}</Text>
+                <Text style={styles.dataEmail}>{contactData.item.value}</Text>
+                <TouchableOpacity
+                  onPress={() => removeContactHandler(contactData.item.key)}
+                >
                   <Image
                     source={icons.clearIcon}
                     resizeMode="contain"

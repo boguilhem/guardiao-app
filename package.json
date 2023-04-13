@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "expo start",
+    "server": "node ./emailServer/app.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
@@ -8,6 +9,7 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.17.11",
     "@react-native-community/datetimepicker": "6.7.3",
+    "@react-navigation/native": "^6.1.6",
     "axios": "^1.3.4",
     "expo": "^48.0.7",
     "expo-av": "~13.2.1",

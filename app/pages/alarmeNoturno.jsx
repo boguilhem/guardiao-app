@@ -1,14 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  FlatList,
-  // Button,
-  TouchableOpacity,
-  Image,
-  SafeAreaView,
-} from 'react-native';
+import { View, Text, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 
 import { Stack, useRouter } from 'expo-router';
@@ -16,13 +7,19 @@ import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import { Audio } from 'expo-av';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button, Switch } from 'react-native-paper';
-import { COLORS, icons, images } from '../../constants';
-import { ScreenHeaderBtn, SwitchComponent, PaperButton } from '../../components';
+import { useIsFocused } from '@react-navigation/native';
+
+import { COLORS, SIZES, icons, images } from '../../constants';
+import { ScreenHeaderBtn } from '../../components';
 import styles from '../../styles/alarmeNoturno.style.js';
 
-const savedContacts = [];
-alarmPlaying = false;
+let STORAGE_KEY = '@user_contacts';
+
+let savedContacts = [];
+
+let alarmPlaying = false;
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: false,
@@ -33,8 +30,8 @@ Notifications.setNotificationHandler({
 
 const AlarmeNoturno = () => {
   const router = useRouter();
-  const [contacts, setContacts] = useState([]);
-  const [contact, setContact] = useState('');
+  const isFocused = useIsFocused();
+
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
@@ -46,7 +43,38 @@ const AlarmeNoturno = () => {
   const [showCancel, setShowCancel] = useState(false);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
 
+  const readData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
+      if (jsonValue !== null) {
+        await setSavedContacts(JSON.parse(jsonValue));
+      }
+    } catch (e) {
+      alert('Failed to fetch the input from storage');
+    }
+  };
+
+  const clearStorage = async () => {
+    try {
+      await AsyncStorage.clear();
+      alert('Storage successfully cleared!');
+    } catch (e) {
+      alert('Failed to clear the async storage.');
+    }
+  };
+
+  const setSavedContacts = (contacts) => {
+    savedContacts = [];
+    contacts.forEach((element) => {
+      savedContacts.push([element.key, element.value]);
+    });
+  };
+
   useEffect(() => {
+    if (isFocused) {
+      readData();
+    }
+
     registerForPushNotificationsAsync().then((token) => setExpoPushToken(token));
 
     notificationListener.current = Notifications.addNotificationReceivedListener(
@@ -85,7 +113,7 @@ const AlarmeNoturno = () => {
       Notifications.removeNotificationSubscription(notificationListener.current);
       Notifications.removeNotificationSubscription(responseListener.current);
     };
-  }, []);
+  }, [isFocused]);
 
   const onToggleSwitch = () => {
     setIsSwitchOn(!isSwitchOn);
@@ -168,30 +196,6 @@ const AlarmeNoturno = () => {
     return token;
   }
 
-  const contactInputHandler = (enteredContact) => {
-    setContact(enteredContact);
-  };
-
-  const addContactHandler = () => {
-    if (!contacts.some((item) => item.key == contact) && contact != '') {
-      setContacts((currentContacts) => [
-        ...currentContacts,
-        { key: contact, value: contact },
-      ]);
-      savedContacts.push(contact);
-      console.log(savedContacts);
-    }
-    setContact('');
-  };
-
-  const removeContactHandler = (contactId) => {
-    savedContacts.splice(savedContacts.indexOf(contactId), 1);
-    console.log(savedContacts);
-    setContacts((currentContacts) => {
-      return currentContacts.filter((contact) => contact.key !== contactId);
-    });
-  };
-
   async function playSound() {
     console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(
@@ -241,29 +245,22 @@ const AlarmeNoturno = () => {
               </Text>
               <View style={styles.alarmContainer}>
                 <Text>Todos os Dias</Text>
-                {/* <SwitchComponent
-                  pressHandler={() => {
-                    enableTimer;
-                  }}
-                /> */}
                 <Switch
                   value={isSwitchOn}
                   onValueChange={onToggleSwitch}
                   color={'lightgreen'}
                   style={styles.alarmContainerSpacing}
                 />
-                {/* <TouchableOpacity onPress={() => {}} style={styles.alarmContainerSpacing}>
+                {/* <TouchableOpacity
+                  onPress={() => {
+                    console.log(savedContacts);
+                  }}
+                  style={styles.alarmContainerSpacing}
+                >
                   <Image
                     source={icons.clearIcon}
                     resizeMode="contain"
                     style={styles.btnImg(20)}
-                  />
-                </TouchableOpacity> */}
-                {/* <TouchableOpacity onPress={handlePress}>
-                  <Image
-                    source={iconUrl}
-                    resizeMode="contain"
-                    style={styles.btnImg(dimension)}
                   />
                 </TouchableOpacity> */}
               </View>
@@ -281,26 +278,6 @@ const AlarmeNoturno = () => {
           SELECIONAR UM HORÁRIO
         </Button>
 
-        {/* <Button mode="contained" textColor="white" onPress={enableTimer}>
-          Ativar Alarme
-        </Button>
-
-        {active ? (
-          <Button mode="contained" textColor="white" onPress={disableTimer}>
-            Desativar Alarme
-          </Button>
-        ) : (
-          ''
-        )} */}
-
-        {/* {active ? (
-          <Text>
-            Alarme ativado para: {date.getHours().toString().padStart(2, '0')}:
-            {date.getMinutes().toString().padStart(2, '0')}
-          </Text>
-        ) : (
-          <Text>Alarme Desativado</Text>
-        )} */}
         {show && (
           <DateTimePicker
             testID="dateTimePicker"
@@ -310,44 +287,6 @@ const AlarmeNoturno = () => {
             onChange={onChange}
           />
         )}
-        {/* <TextInput
-          style={{
-            width: '80%',
-            borderColor: 'black',
-            borderWidth: 1,
-            padding: 10,
-          }}
-          placeholder=""
-          onChangeText={contactInputHandler}
-          value={contact}
-        /> */}
-
-        {/* <Button title="Adicionar Contato" onPress={addContactHandler} /> */}
-        {/* <Button mode="contained" textColor="white" onPress={addContactHandler}>
-          Adicionar Contato
-        </Button> */}
-
-        {/* <Text>Seus contatos:</Text> */}
-
-        <FlatList
-          data={contacts}
-          renderItem={(contactData) => (
-            <View>
-              <Text>{contactData.item.value}</Text>
-              {/* <Button
-                title="remover"
-                onPress={() => removeContactHandler(contactData.item.key)}
-              /> */}
-              <Button
-                mode="contained"
-                textColor="white"
-                onPress={() => removeContactHandler(contactData.item.key)}
-              >
-                Remover Contato
-              </Button>
-            </View>
-          )}
-        />
 
         {showCancel ? (
           <Button
@@ -356,6 +295,7 @@ const AlarmeNoturno = () => {
             buttonColor="red"
             textColor="white"
             onPress={stopAlarm}
+            style={{ height: '12%', justifyContent: 'center', marginTop: SIZES.xxLarge }}
           >
             PARAR ALARME
           </Button>
@@ -372,7 +312,7 @@ const AlarmeNoturno = () => {
             onPress={() => {
               router.push(`/pages/contatos`);
             }}
-            style={{ height: '30%', justifyContent: 'center' }}
+            style={{ height: '30%', justifyContent: 'center', marginTop: SIZES.xxLarge }}
           >
             Contatos
           </Button>

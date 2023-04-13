@@ -5,7 +5,8 @@ import { COLORS, FONT, SIZES } from '../constants';
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    paddingHorizontal: SIZES.xxLarge,
+    paddingHorizontal: 0,
+    marginHorizontal: 0,
     marginBottom: SIZES.xxLarge,
     alignItems: 'center',
   },
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     marginTop: SIZES.xxxLarge,
-    marginBottom: SIZES.xxxLarge,
+    marginBottom: SIZES.xSmall,
     flexDirection: 'row',
   },
 
@@ -116,18 +117,31 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
-  dataText: {
+  dataName: {
     fontFamily: FONT.regular,
     fontSize: SIZES.medium,
     paddingHorizontal: SIZES.xSmall,
-    width: '40%',
+    width: '33%',
     height: 30,
     borderWidth: 1,
     borderRadius: 10,
     borderColor: COLORS.gray2,
     textAlignVertical: 'bottom',
     textAlign: 'left',
-    marginRight: SIZES.medium,
+    marginRight: 5,
+  },
+  dataEmail: {
+    fontFamily: FONT.regular,
+    fontSize: SIZES.medium,
+    paddingHorizontal: SIZES.xSmall,
+    width: '55%',
+    height: 30,
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: COLORS.gray2,
+    textAlignVertical: 'bottom',
+    textAlign: 'left',
+    marginRight: SIZES.xSmall,
   },
 
   btnImg: (dimension) => ({
