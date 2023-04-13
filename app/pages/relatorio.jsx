@@ -89,12 +89,12 @@ const Relatorio = () => {
       if (inputArray[0] === 0) {
         SetInputArray([parseInt(inputValue)]);
         SetHistoryArray([[inputValue, showDate()]]);
-        console.log('Console 1:', inputArray, historyArray);
+        // console.log('Console 1:', inputArray, historyArray);
       } else {
         data.datasets[0].data.push(parseInt(inputValue));
         tuplesGraph.push([inputValue, showDate()]);
       }
-      console.log('Console 2:', inputArray, historyArray);
+      // console.log('Console 2:', inputArray, historyArray);
       SetGlobalArray([inputArray, historyArray]);
 
       saveData([inputArray, historyArray]);
